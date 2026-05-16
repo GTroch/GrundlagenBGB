@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Das BGB – Dein heimlicher Lebensbegleiter | 12. Jahrgangsstufe WR</title>
+<style>
+  :root {
+    --blue-dark:  #1F4E79;
+    --blue-mid:   #2E75B6;
+    --blue-light: #BDD7EE;
+    --yellow:     #FFF2CC;
+    --green-lt:   #E2EFDA;
+    --red-lt:     #FCE4D6;
+    --gray:       #F2F2F2;
+    --white:      #FFFFFF;
+    --text:       #1A1A1A;
+    --border:     #AAAAAA;
+    --green-dark: #2D6A2D;
+    --red-dark:   #C00000;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: #EEF3F8;
+    line-height: 1.6;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--blue-dark);
+    color: white;
+    padding: 40px 20px 30px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    font-size: 1.3rem;
+    opacity: 0.85;
+    margin-bottom: 16px;
+  }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    background: var(--blue-mid);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 20px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 12px 16px;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+  /* ===== MAIN ===== */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .section-header {
+    background: var(--blue-dark);
+    color: white;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-header .num {
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .section-body {
+    padding: 24px;
+  }
+
+  h3 {
+    color: var(--blue-dark);
+    font-size: 1.05rem;
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--blue-light);
+  }
+  h3:first-child { margin-top: 0; }
+
+  p { margin-bottom: 12px; }
+
+  ul, ol {
+    padding-left: 22px;
+    margin-bottom: 12px;
+  }
+  li { margin-bottom: 5px; }
+
+  /* ===== INFO BOXES ===== */
+  .box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-left: 5px solid;
+  }
+  .box-yellow { background: var(--yellow); border-color: #D4A017; }
+  .box-green  { background: var(--green-lt); border-color: var(--green-dark); }
+  .box-red    { background: var(--red-lt); border-color: var(--red-dark); }
+  .box-blue   { background: var(--blue-light); border-color: var(--blue-dark); }
+  .box strong { display: block; margin-bottom: 5px; font-size: 0.95rem; }
+
+  /* ===== TABLES ===== */
+  .tbl-wrap { overflow-x: auto; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    background: var(--blue-dark);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  td {
+    padding: 9px 14px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--gray); }
+  tr:nth-child(odd) td  { background: white; }
+  .tbl-highlight th { background: var(--blue-mid); }
+
+  /* ===== RECHTE-TABELLE ==== */
+  .vs-table { width: 100%; border-collapse: collapse; }
+  .vs-table th {
+    padding: 12px 16px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .th-priv { background: var(--blue-dark); }
+  .th-pub  { background: var(--red-dark); }
+  .vs-table td { padding: 10px 14px; border: 1px solid #ddd; }
+  .vs-table .td-priv { background: var(--blue-light); }
+  .vs-table .td-pub  { background: var(--red-lt); }
+
+  /* ===== GF-TABELLE ===== */
+  .gf-unter td  { background: var(--red-lt) !important; }
+  .gf-mitte td  { background: var(--yellow) !important; }
+  .gf-voll td   { background: var(--green-lt) !important; }
+
+  /* ===== QUIZ ===== */
+  .quiz-item {
+    border: 2px solid var(--blue-dark);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .quiz-q {
+    background: var(--blue-light);
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    user-select: none;
+  }
+  .quiz-q:hover { background: #A8C9E5; }
+  .quiz-q .q-num {
+    color: var(--blue-dark);
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .quiz-q .toggle-icon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    color: var(--blue-dark);
+    transition: transform 0.3s;
+  }
+  .quiz-q.open .toggle-icon { transform: rotate(90deg); }
+  .quiz-a {
+    background: var(--green-lt);
+    padding: 14px 18px;
+    display: none;
+    border-top: 2px solid var(--blue-dark);
+  }
+  .quiz-a.visible { display: block; }
+  .quiz-a .a-label {
+    color: var(--green-dark);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  /* ===== GLOSSAR ===== */
+  .glossar-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-bottom: 1px solid #eee;
+  }
+  .glossar-item:last-child { border-bottom: none; }
+  .glossar-term {
+    background: var(--blue-light);
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--blue-dark);
+    display: flex;
+    align-items: center;
+  }
+  .glossar-def {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    background: white;
+  }
+  .glossar-item:nth-child(even) .glossar-def { background: var(--gray); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--blue-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    margin-top: 40px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    header h1 { font-size: 2rem; }
+    .glossar-item { grid-template-columns: 1fr; }
+    .glossar-term { border-bottom: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Das BGB</h1>
+  <div class="subtitle">Dein heimlicher Lebensbegleiter</div>
+  <div class="badge">12. Jahrgangsstufe &nbsp;|&nbsp; Wirtschaft und Recht (G9) &nbsp;|&nbsp; Bürgerliches Gesetzbuch</div>
+</header>
+
+<nav>
+  <a href="#s1">Was ist das BGB?</a>
+  <a href="#s2">Privatrecht</a>
+  <a href="#s3">Vertragsschluss</a>
+  <a href="#s4">Geschäftsfähigkeit</a>
+  <a href="#s5">Willensmängel</a>
+  <a href="#s6">Kaufvertrag</a>
+  <a href="#s7">Quiz</a>
+  <a href="#s8">Glossar</a>
+</nav>
+
+<main>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section id="s1">
+  <div class="section-header">
+    <div class="num">1</div>
+    <h2>Was ist das BGB – und warum sollte dich das interessieren?</h2>
+  </div>
+  <div class="section-body">
+    <p>Stell dir vor: Du kaufst bei eBay ein Smartphone, es kommt kaputt an. Du buchst einen Urlaub, der dann ganz anders ist als beschrieben. Du unterschreibst einen Handyvertrag – und merkst erst später, was du da eigentlich zugesagt hast. <strong>In all diesen Alltagssituationen steckt das BGB drin!</strong></p>
+    <p>Das Bürgerliche Gesetzbuch (BGB) ist das wichtigste Gesetzbuch des deutschen Privatrechts. Es regelt die Rechtsbeziehungen zwischen Privatpersonen – also zwischen dir und dem Online-Shop, dir und deinem Vermieter, dir und deinem Arbeitgeber.</p>
+
+    <div class="box box-yellow">
+      <strong>Historischer Fun Fact:</strong>
+      Das BGB wurde zwischen 1873 und 1896 von einer Expertenkommission erarbeitet und trat am <strong>1. Januar 1900</strong> in Kraft. Es ist also schon über 120 Jahre alt – und gilt noch heute! Allerdings wurde es seitdem mehrfach grundlegend überarbeitet, zuletzt 2022 zum Thema digitale Produkte.
+    </div>
+
+    <h3>Das BGB und seine Struktur – 5 Bücher</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Buch</th><th>Bereich</th><th>Inhalt</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Buch 1</strong></td><td>Allgemeiner Teil (§§ 1–240)</td><td>Grundlegende Begriffe für ALLE Rechtsbereiche</td></tr>
+          <tr><td><strong>Buch 2</strong></td><td>Schuldrecht (§§ 241–853)</td><td>Verträge, Kauf, Miete, Werkvertrag, Schadensersatz</td></tr>
+          <tr><td><strong>Buch 3</strong></td><td>Sachenrecht (§§ 854–1296)</td><td>Eigentum, Besitz, Pfandrecht</td></tr>
+          <tr><td><strong>Buch 4</strong></td><td>Familienrecht (§§ 1297–1921)</td><td>Ehe, Scheidung, Unterhalt</td></tr>
+          <tr><td><strong>Buch 5</strong></td><td>Erbrecht (§§ 1922–2385)</td><td>Testament, Erben, Pflichtteil</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section id="s2">
+  <div class="section-header">
+    <div class="num">2</div>
+    <h2>Privatrecht vs. Öffentliches Recht – Wer streitet mit wem?</h2>
+  </div>
+  <div class="section-body">
+    <p>Nicht jede Streitigkeit gehört ins Privatrecht. Hier die entscheidende Unterscheidung:</p>
+    <div class="tbl-wrap">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th class="th-priv">Privatrecht</th>
+            <th class="th-pub">Öffentliches Recht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-priv">Privatperson streitet gegen Privatperson oder Unternehmen</td>
+            <td class="td-pub">Bürger streitet gegen den Staat (oder Staat gegen Bürger)</td>
+          </tr>
+          <tr>
+            <td class="td-priv"><strong>Gleichordnungsverhältnis</strong> – beide Parteien sind gleichgestellt</td>
+            <td class="td-pub"><strong>Über-/Unterordnungsverhältnis</strong> – Staat hat Hoheitsrecht</td>
+          </tr>
+          <tr>
+            <td class="td-priv">Zuständig: <strong>Zivilgericht</strong></td>
+            <td class="td-pub">Zuständig: <strong>Verwaltungsgericht</strong></td>
+          </tr>
+          <tr>
+            <td class="td-priv"><em>Bsp.: Du kaufst ein kaputtes Auto und willst dein Geld zurück</em></td>
+            <td class="td-pub"><em>Bsp.: Das Finanzamt schickt dir einen Steuerbescheid</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-yellow">
+      <strong>Merke:</strong>
+      Das BGB ist das Kerngesetz des Privatrechts. Darüber hinaus gibt es <strong>Sonderprivatrecht</strong> wie das Handelsrecht (nur für Kaufleute) und das Verbraucherschutzrecht (nur für Verbraucher).
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section id="s3">
+  <div class="section-header">
+    <div class="num">3</div>
+    <h2>Wie kommt ein Vertrag zustande?</h2>
+  </div>
+  <div class="section-body">
+    <p>Verträge schließt man den ganzen Tag: Beim Kaufen im Supermarkt, beim Streamen von Netflix, beim Bestellen von Pizza. Aber wie entsteht eigentlich ein Vertrag?</p>
+
+    <h3>Angebot + Annahme = Vertrag!</h3>
+    <p>Ganz einfach: Ein Vertrag braucht <strong>zwei übereinstimmende Willenserklärungen</strong>:</p>
+    <ul>
+      <li><strong>Angebot (Antrag):</strong> Muss so konkret sein, dass die andere Seite einfach „Ja" sagen kann.</li>
+      <li><strong>Annahme:</strong> Einfaches „Ja" – oder eine entsprechende Handlung.</li>
+    </ul>
+
+    <div class="box box-yellow">
+      <strong>Alltagsbeispiel: Der Supermarkt</strong>
+      Die Ware im Regal ist <strong>KEIN Angebot</strong>, sondern nur eine <em>invitatio ad offerendum</em> (Einladung zur Abgabe eines Angebots). Wenn du zur Kasse gehst und die Ware hinlegst, machst <strong>DU</strong> das Angebot. Der Kassierer nimmt es mit dem Kassieren an. Wenn der Supermarkt ausverkauft ist, muss er dir also nichts verkaufen!
+    </div>
+
+    <h3>Willenserklärung – Was zählt als Vertrag?</h3>
+    <p>Nicht jede Aussage ist rechtsverbindlich. Eine Willenserklärung muss:</p>
+    <ul>
+      <li>auf ein Rechtsgeschäft gerichtet sein (nicht nur sozial gemeint)</li>
+      <li>vom Erklärenden willentlich abgegeben werden</li>
+      <li>beim Empfänger ankommen (= <strong>„Zugang"</strong>)</li>
+    </ul>
+
+    <div class="box box-red">
+      <strong>Kein Vertrag! Warum?</strong>
+      Du fragst deinen Kumpel: „Kannst du mich morgen mit dem Auto zum Bahnhof fahren?" Er sagt „Ja". Das ist <strong>KEIN Vertrag</strong> – keine Seite will sich rechtlich verpflichten. Anders wäre es, wenn ein Taxifahrer „Ja" sagt: Dann ist es ein Beförderungsvertrag mit Zahlungspflicht.
+    </div>
+
+    <h3>Sonderfall: Schweigen als Annahme?</h3>
+    <p><strong>Grundsatz: Schweigen ist KEINE Annahme!</strong> Man kann niemandem einfach etwas schicken und erklären: „Falls du nicht antwortest, gilt das als Zustimmung." Ausnahmen gibt es z.B. im Handelsrecht unter Kaufleuten.</p>
+
+    <h3>Trennungs- und Abstraktionsprinzip</h3>
+    <div class="box box-blue">
+      <strong>Wichtiges Grundprinzip:</strong>
+      Kaufvertrag (= Verpflichtungsgeschäft, § 433 BGB) und Eigentumsübertragung (= Verfügungsgeschäft, § 929 BGB) sind <strong>zwei separate Rechtsgeschäfte</strong>. Ist der Kaufvertrag unwirksam, kann die Eigentumsübertragung trotzdem wirksam sein – man muss dann nach § 812 BGB (Bereicherungsrecht) zurückgeben.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section id="s4">
+  <div class="section-header">
+    <div class="num">4</div>
+    <h2>Darf ich das überhaupt? – Geschäftsfähigkeit</h2>
+  </div>
+  <div class="section-body">
+    <p>Nicht jeder darf beliebig Verträge schließen. Das Gesetz schützt vor allem Kinder und Jugendliche vor unbedachten Verpflichtungen.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Alter</th><th>Status</th><th>Folge</th></tr></thead>
+        <tbody>
+          <tr class="gf-unter">
+            <td><strong>Unter 7 Jahre</strong></td>
+            <td>Geschäftsunfähig (§ 104 BGB)</td>
+            <td>Verträge sind <strong>NICHTIG</strong> – nicht mal die Eltern können zustimmen</td>
+          </tr>
+          <tr class="gf-mitte">
+            <td><strong>7–17 Jahre</strong></td>
+            <td>Beschränkt geschäftsfähig (§§ 106 ff. BGB)</td>
+            <td>Verträge <strong>schwebend unwirksam</strong> – werden erst mit Elterngenehmigung wirksam</td>
+          </tr>
+          <tr class="gf-voll">
+            <td><strong>Ab 18 Jahre</strong></td>
+            <td>Voll geschäftsfähig</td>
+            <td>Alle Verträge selbst schließen und <strong>voll verantworten</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-green">
+      <strong>Der Taschengeldparagraph (§ 110 BGB)</strong>
+      Als Jugendlicher kannst du Verträge schließen, die du mit deinem <strong>eigenen Taschengeld</strong> bezahlst – das nennt man den „Taschengeldparagraphen". Kaufst du dir für dein Taschengeld ein Buch oder ein Game, ist das voll wirksam. Kaufst du aber auf Rechnung oder überschreitest dein Budget erheblich, brauchst du Elterngenehmigung.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section id="s5">
+  <div class="section-header">
+    <div class="num">5</div>
+    <h2>Wenn etwas schiefläuft – Willensmängel &amp; Anfechtung</h2>
+  </div>
+  <div class="section-body">
+    <p>Was passiert, wenn du etwas erklärst, das du gar nicht so gemeint hast? Das BGB kennt verschiedene Fälle von <strong>Willensmängeln</strong>.</p>
+
+    <h3>Die drei Willensebenen</h3>
+    <ul>
+      <li><strong>Handlungswille:</strong> Habe ich bewusst gehandelt? (Schlafen, Bewusstlosigkeit = KEIN Handlungswille)</li>
+      <li><strong>Erklärungsbewusstsein:</strong> Wusste ich, dass ich etwas Rechtliches tue? (Versehentliches Hand-Heben bei einer Auktion)</li>
+      <li><strong>Geschäftswille:</strong> Wollte ich DIESES Geschäft? (Falscher Preis getippt, Irrtum über eine Eigenschaft)</li>
+    </ul>
+
+    <h3>Anfechtung (§§ 119 ff. BGB)</h3>
+    <p>Wenn ein Willensmangel vorliegt, kann man die Willenserklärung <strong>anfechten</strong> – also nachträglich unwirksam machen. Wichtige Anfechtungsgründe:</p>
+    <ul>
+      <li><strong>Irrtum über den Inhalt (§ 119 Abs. 1 BGB):</strong> Du wolltest 100 Euro bieten, hast aber 1.000 Euro getippt.</li>
+      <li><strong>Irrtum über eine Eigenschaft (§ 119 Abs. 2 BGB):</strong> Du kaufst ein „echtes" Kunstwerk, das sich als Fälschung herausstellt.</li>
+      <li><strong>Arglistige Täuschung (§ 123 BGB):</strong> Jemand hat dich absichtlich belogen. Anfechtungsfrist: 1 Jahr ab Entdeckung.</li>
+    </ul>
+
+    <div class="box box-red">
+      <strong>Wichtig: Anfechtung ≠ Rücktritt!</strong>
+      <strong>Anfechtung</strong> macht den Vertrag <em>rückwirkend NICHTIG</em> (als ob er nie existiert hätte). Der <strong>Rücktritt</strong> dagegen löst einen bereits wirksamen Vertrag <em>für die Zukunft</em> auf. Bei der Anfechtung wegen Irrtums muss man außerdem Schadensersatz leisten, wenn der andere Teil auf die Gültigkeit des Vertrags vertraut hat (§ 122 BGB).
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section id="s6">
+  <div class="section-header">
+    <div class="num">6</div>
+    <h2>Du hast etwas gekauft – und es ist kaputt!</h2>
+  </div>
+  <div class="section-body">
+    <p>Das ist wohl die alltäglichste Situation, in der das BGB wichtig wird: Du kaufst etwas, und es funktioniert nicht wie versprochen. Was dann?</p>
+
+    <h3>Der Kaufvertrag (§ 433 BGB)</h3>
+    <p>Beim Kaufvertrag verpflichten sich beide Seiten:</p>
+    <ul>
+      <li><strong>Verkäufer:</strong> Die Sache übergeben und MANGELFREIES Eigentum verschaffen</li>
+      <li><strong>Käufer:</strong> Die Sache abnehmen und den Kaufpreis zahlen</li>
+    </ul>
+
+    <h3>Was ist ein Mangel? (§ 434 BGB)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mangelart</th><th>Erklärung + Beispiel</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Subjektiver Mangel</strong></td>
+            <td>Vereinbarte Beschaffenheit fehlt. <em>Bsp.: Verkäufer sagt „unfallfrei" – Auto hatte aber Unfallschaden.</em></td>
+          </tr>
+          <tr>
+            <td><strong>Objektiver Mangel</strong></td>
+            <td>Sache eignet sich nicht für üblichen Gebrauch. <em>Bsp.: Neues Fahrrad rostet nach 2 Wochen.</em></td>
+          </tr>
+          <tr>
+            <td><strong>Rechtsmangel</strong></td>
+            <td>Dritter hat Rechte an der Sache. <em>Bsp.: Verkäufer verkauft Auto, das noch unter Sicherungseigentum der Bank steht.</em></td>
+          </tr>
+          <tr>
+            <td><strong>Aliud-Lieferung</strong></td>
+            <td>Falsche Sache geliefert (§ 434 V BGB). <em>Bsp.: Du bestellst T-Shirt Gr. M, bekommst XL.</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Gewährleistungsrechte des Käufers (§ 437 BGB) – in dieser Reihenfolge!</h3>
+    <ol>
+      <li><strong>Nacherfüllung (§ 439 BGB):</strong> Reparatur ODER Neulieferung – Käufer hat Wahlrecht! Verkäufer hat Recht zur 2. Andienung.</li>
+      <li><strong>Erst nach Fristsetzung + Fristablauf:</strong> Rücktritt, Minderung (Preisreduzierung) ODER Schadensersatz.</li>
+    </ol>
+
+    <div class="box box-green">
+      <strong>Verbraucherschutz: Beweislastumkehr (§ 477 BGB)</strong>
+      Wenn du als Verbraucher bei einem Unternehmer einkaufst und innerhalb von <strong>1 Jahr</strong> ein Mangel auftritt, wird vermutet, dass der Mangel <strong>BEREITS BEIM KAUF</strong> vorhanden war. Der Verkäufer muss beweisen, dass die Sache beim Kauf in Ordnung war – nicht du! Die Gewährleistungsfrist beträgt insgesamt 2 Jahre (neue Waren).
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 7: QUIZ ==================== -->
+<section id="s7">
+  <div class="section-header">
+    <div class="num">7</div>
+    <h2>Quiz-Zeit: Teste dein Wissen!</h2>
+  </div>
+  <div class="section-body">
+    <p>10 Fragen rund ums BGB – direkt aus dem Alltag. Klicke auf eine Frage, um die Antwort aufzuklappen. Überlege zuerst selbst!</p>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 1: </span>Du kaufst im Supermarkt Milch. Ab wann gilt das als Vertrag?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Wenn du die Milch an der Kasse hinlegst (= dein Angebot) und die Kassiererin kassiert (= Annahme). Die Ware im Regal ist nur eine <em>invitatio ad offerendum</em> – der Supermarkt muss dir nichts verkaufen, wenn er ausverkauft ist.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 2: </span>Darf ein 15-Jähriger ein Smartphone für 800 Euro kaufen?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Nein – er ist beschränkt geschäftsfähig (§§ 106 ff. BGB). Der Vertrag ist schwebend unwirksam und wird erst wirksam, wenn die Eltern zustimmen. Zahlt er mit eigenem Taschengeld, wäre es wirksam – aber 800 Euro übersteigen normalerweise das Taschengeld erheblich.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 3: </span>Dein Kumpel hebt bei einer Auktion versehentlich die Hand und bietet 300 Euro. Muss er zahlen?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Grundsätzlich ja – der Handlungswille war da. Aber er kann wegen eines Irrtums über den Inhalt seiner Erklärung anfechten (§ 119 Abs. 1 BGB), wenn er <em>unverzüglich</em> anficht. Nachteil: Er muss dem Auktionator ggf. den Vertrauensschaden ersetzen (§ 122 BGB).
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 4: </span>Du bestellst online ein T-Shirt in Größe M, erhältst aber Größe XL. Was sind deine Rechte?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Das ist ein Sachmangel (Aliud-Lieferung, § 434 V BGB). Dein erstes Recht ist die Nacherfüllung: Du kannst das richtige Shirt verlangen. Schickt der Shop erneut das Falsche oder reagiert nicht, kannst du zurücktreten und dein Geld zurück fordern.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 5: </span>Was bedeutet das „Abstraktionsprinzip"?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Kaufvertrag (Verpflichtungsgeschäft) und Eigentumsübergabe (Verfügungsgeschäft) sind rechtlich voneinander getrennt und unabhängig. Ist der Kaufvertrag z.B. wegen Minderjährigkeit nichtig, kann die Eigentumsübergabe trotzdem wirksam sein – dann muss die Sache nach § 812 BGB (ungerechtfertigte Bereicherung) zurückgegeben werden.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 6: </span>Du kaufst ein gebrauchtes Fahrrad beim Händler. Nach 8 Monaten bricht die Gabel. Wer muss beweisen, dass der Mangel schon beim Kauf da war?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Wenn du als Verbraucher bei einem Unternehmer gekauft hast, greift die Beweislastumkehr nach § 477 BGB: Innerhalb von 1 Jahr ab Kauf wird vermutet, dass der Mangel schon beim Kauf vorlag. Der Verkäufer muss das Gegenteil beweisen. Bei einem Privatkauf gilt das nicht!
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 7: </span>Dein Freund schreibt dir: „Kannst du mir dein Fahrrad für 50 Euro verkaufen?" Du antwortest: „Nur für 80 Euro." Ist ein Vertrag entstanden?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Nein! Deine Antwort ist keine Annahme, sondern ein neues Angebot (§ 150 Abs. 2 BGB) – du hast seinen Antrag abgelehnt und gleichzeitig ein Gegenangebot gemacht. Erst wenn dein Freund „OK, 80 Euro" sagt, kommt ein Vertrag zustande.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 8: </span>Ist ein Vertrag per WhatsApp gültig?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Im Grundsatz ja – Verträge können formfrei geschlossen werden (Formfreiheit). Ausnahmen: Das Gesetz schreibt für bestimmte Verträge Schriftform oder notarielle Beurkundung vor, z.B. beim Grundstückskauf (§ 311b BGB) oder beim Bürgschaftsversprechen (§ 766 BGB). Ein gewöhnlicher Kaufvertrag ist per WhatsApp valide.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 9: </span>Du kaufst ein Smartphone beim Händler. Nach 14 Monaten zeigt das Display Fehler. Hast du noch Gewährleistungsrechte?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Beim Kauf neuer Waren gilt eine Gewährleistungsfrist von 2 Jahren (§ 438 Abs. 1 Nr. 3 BGB). Du bist also noch innerhalb der Frist. Da der Mangel aber nach mehr als 12 Monaten auftritt, trägst nun <strong>du</strong> die Beweislast, dass der Mangel schon beim Kauf vorhanden war.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q" onclick="toggleQuiz(this)">
+        <span><span class="q-num">Frage 10: </span>Was ist der Unterschied zwischen Privatrecht und öffentlichem Recht – und warum ist das wichtig?</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div class="quiz-a">
+        <div class="a-label">Antwort:</div>
+        Privatrecht regelt Streitigkeiten zwischen gleichgestellten Personen (Bürger gegen Bürger/Unternehmen). Öffentliches Recht regelt das Verhältnis zwischen Bürger und Staat, der mit Hoheitsrechten ausgestattet ist. Wichtig: Zuständige Gerichte sind verschieden – Privatrecht: Zivilgericht, Öffentliches Recht: Verwaltungsgericht.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 8: GLOSSAR ==================== -->
+<section id="s8">
+  <div class="section-header">
+    <div class="num">8</div>
+    <h2>Glossar – Die wichtigsten Begriffe auf einen Blick</h2>
+  </div>
+  <div class="section-body">
+    <div style="border: 1px solid #ddd; border-radius: 6px; overflow: hidden;">
+      <div class="glossar-item">
+        <div class="glossar-term">Privatautonomie</div>
+        <div class="glossar-def">Die Freiheit, Verträge nach eigenem Willen zu schließen oder abzulehnen.</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Willenserklärung</div>
+        <div class="glossar-def">Äußerung des Willens, ein Rechtsgeschäft vorzunehmen (z.B. Angebot, Annahme, Kündigung).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Angebot + Annahme</div>
+        <div class="glossar-def">Die zwei Willenserklärungen, die zusammen einen Vertrag bilden.</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Geschäftsunfähigkeit</div>
+        <div class="glossar-def">Unter 7 Jahren: Verträge sind immer nichtig (§ 104 BGB).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Beschränkte GF</div>
+        <div class="glossar-def">7–17 Jahre: Verträge schwebend unwirksam, Elternzustimmung nötig (§§ 106 ff. BGB).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Taschengeldparagraph</div>
+        <div class="glossar-def">§ 110 BGB: Jugendliche können mit eigenem Taschengeld wirksam Verträge schließen.</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Anfechtung</div>
+        <div class="glossar-def">Rückwirkende Unwirksamkeit eines Vertrags wegen Willensmangel oder Täuschung (§§ 119, 123 BGB).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Sachmangel</div>
+        <div class="glossar-def">Die Sache entspricht nicht der vereinbarten oder üblichen Beschaffenheit (§ 434 BGB).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Nacherfüllung</div>
+        <div class="glossar-def">Erstes Gewährleistungsrecht des Käufers: Reparatur oder Neulieferung (§ 439 BGB).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Beweislastumkehr</div>
+        <div class="glossar-def">Innerhalb von 1 Jahr beim Verbrauchsgüterkauf: Mangel gilt als von Anfang an vorhanden (§ 477 BGB).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Abstraktionsprinzip</div>
+        <div class="glossar-def">Kauf- und Übereignungsvertrag sind rechtlich unabhängig voneinander (Trennungsprinzip).</div>
+      </div>
+      <div class="glossar-item">
+        <div class="glossar-term">Dissens</div>
+        <div class="glossar-def">Fehlende Willensübereinstimmung über wesentliche Vertragsbestandteile → kein Vertrag.</div>
+      </div>
+    </div>
+
+    <div class="box box-blue" style="margin-top: 24px; text-align: center; font-size: 1rem;">
+      <strong>Das BGB begleitet dich dein ganzes Leben – von der Geburt bis zum Testament!</strong>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Zusammenfassung BGB &nbsp;|&nbsp; 12. Jahrgangsstufe WR-G9 &nbsp;|&nbsp; Bürgerliches Recht – Rechtstechnische Grundlagen</p>
+  <p style="margin-top:6px; font-size:0.75rem;">Erstellt auf Basis: Skript GK BGB I (Prof. Dr. Buchwitz) &amp; Skript Schuldrecht BT 1 (Repetitorium Hofmann)</p>
+</footer>
+
+<script>
+function toggleQuiz(el) {
+  el.classList.toggle('open');
+  const answer = el.nextElementSibling;
+  answer.classList.toggle('visible');
+}
+</script>
+
+</body>
+</html>
